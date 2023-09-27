@@ -1,3 +1,12 @@
+// // GET
+// const obtener = async () => {
+//   let res = await (await fetch("http://127.0.0.1:5010/libros")).json();
+//   console.log(res);
+// };
+
+// obtener()
+
+// // POST
 // const enviar = async () => {
 //   const config = {
 //     method: "POST",
@@ -14,7 +23,8 @@
 
 // enviar();
 
-// const actualizar = async () => {
+// // PUT
+// const actualizar = async (id) => {
 //   const config = {
 //     method: "PUT",
 //     headers: { "content-type": "application/json" },
@@ -24,15 +34,16 @@
 //       autor: "juanito",
 //     }),
 //   };
-//   let res = await (await fetch("http://127.0.0.1:5010/libros/1", config)).json();
+//   let res = await (await fetch(`http://127.0.0.1:5010/libros/${id}`, config)).json();
 //   console.log(res);
 // };
 
-// actualizar();
+// actualizar(1);
 
-// const eliminar = async () => {
-//   let res = await (await fetch("http://127.0.0.1:5010/libros/1", {method: "DELETE"})).json();
+// // DELETE
+// const eliminar = async (id) => {
+//   let res = await (await fetch(`http://127.0.0.1:5010/libros/${id}`, {method: "DELETE"})).json();
 //   console.log(res);
 // };
 
-// eliminar();
+// eliminar(1);
