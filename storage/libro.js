@@ -8,45 +8,74 @@ export const getAll = async()=>{
     return res;
 }
 
-export const post = async(obj)=>{
+export const post = async (obj = {autorId:"autorId", categoriaId: "categoriaId", editorialId: "editorialId", fechaLanzamiento:"fechaLanzamiento", titulo: "titulo", isbn: "isbn", numPaginacion: "numPaginacion", estadoId: "estadoId"}) =>{
+
+    const {autorId, categoriaId, editorialId, fechaLanzamiento, titulo, isbn, numPaginacion, estadoId} = obj;
+
+    if(!autorId) return {status: 400, message: 'Falta el dato: autorId'};
+    if(!categoriaId) return {status: 400, message: 'Falta el dato: categoriaId'};
+    if(!editorialId) return {status: 400, message: 'Falta el dato: editorialId'};
+    if(!fechaLanzamiento) return {status: 400, message: 'Falta el dato: fechaLanzamiento}'};
+    if(!titulo) return {status: 400, message: 'Falta el dato: titulo'};
+    if(!isbn) return {status: 400, message: 'Falta el dato: isbn'};
+    if(!numPaginacion) return {status: 400, message: 'Falta el dato: numPaginacion'};
+    if(!estadoId) return {status: 400, message: 'Falta el dato: estadoId'};
+
+    let date = new Date(fechaLanzamiento);
+
+    if(!(date && date.getFullYear()<=2040)) return {status: 400, message: `El dato 'Fecha: ${fechaLanzamiento}' no cumple con el formato`};
+    if(typeof autorId !== 'number') return {status: 400, message: `El dato '${autorId}' no cumple con el formato`};
+    if(typeof categoriaId !== 'number') return {status: 400, message: `El dato '${categoriaId}' no cumple con el formato`};
+    if(typeof editorialId !== 'number') return {status: 400, message: `El dato '${editorialId}' no cumple con el formato`};
+    if(typeof titulo !== 'string') return {status: 400, message: `El dato '${titulo}' no cumple con el formato`};
+    if(typeof isbn !== 'string') return {status: 400, message: `El dato '${isbn}' no cumple con el formato`};
+    if(typeof numPaginacion !== 'number') return {status: 400, message: `El dato '${numPaginacion}' no cumple con el formato`};
+    if(typeof estadoId !== 'number') return {status: 400, message: `El dato '${estadoId}' no cumple con el formato`};
     config.method = "POST";
     config.body = JSON.stringify(obj);
-    let res = await (await fetch(`${uri}/libro`, config)).json();
-    return res;
+    await fetch(`${uri}/libro`, config);
 }
 
 export const deleteOne = async(id)=>{
     if(typeof id !== 'number') return {status: 400, message: `El datos '${id}' no cumple con el formato`};
     config.method = "DELETE";
-    // config.body = JSON.stringify(obj);
-    let res = await (await fetch(`${uri}/libro/${id}`, config)).json();
-    return res;
+    await fetch(`${uri}/libro/${id}`, config)
 }
 
-export const putOne = async(obj={})=>{
-    if(!obj.id) return {status: 400, message: `Usuario mande un los datos plis :)`};
-    const {id, autorId, categoriaId, editorialId, titulo, fechaLanzamiento, isbn, numPaginacion, estadoId} = obj;
-    let date = new Date(obj.fechaLanzamiento);
-    if(!(date && date.getFullYear()<=2040)) return {status: 400, message: `El datos '${fechaLanzamiento}' no cumple con el formato`};
-    if(typeof id !== 'number') return {status: 400, message: `El datos '${id}' no cumple con el formato`};
-    if(typeof autorId !== 'number') return {status: 400, message: `El datos '${autorId}' no cumple con el formato`};
-    if(typeof categoriaId !== 'number') return {status: 400, message: `El datos '${categoriaId}' no cumple con el formato`};
-    if(typeof editorialId !== 'number') return {status: 400, message: `El datos '${editorialId}' no cumple con el formato`};
-    if(typeof titulo !== 'string') return {status: 400, message: `El datos '${titulo}' no cumple con el formato`};
-    if(typeof isbn !== 'string') return {status: 400, message: `El datos '${isbn}' no cumple con el formato`};
-    if(typeof numPaginacion !== 'number') return {status: 400, message: `El datos '${numPaginacion}' no cumple con el formato`};
-    if(typeof estadoId !== 'number') return {status: 400, message: `El datos '${estadoId}' no cumple con el formato`};
-    
+export const putOne = async (obj = {id:"Id", autorId:"autorId", categoriaId: "categoriaId", editorialId: "editorialId", fechaLanzamiento:"fechaLanzamiento", titulo: "titulo", isbn: "isbn", numPaginacion: "numPaginacion", estadoId: "estadoId"}) => {
+
+    const {id, autorId, categoriaId, editorialId, fechaLanzamiento, titulo, isbn, numPaginacion, estadoId} = obj;
+
+    if(!id) return {status: 400, message: 'Falta el dato: Id'}
+    if(!autorId) return {status: 400, message: 'Falta el dato: autorId'};
+    if(!categoriaId) return {status: 400, message: 'Falta el dato: categoriaId'};
+    if(!editorialId) return {status: 400, message: 'Falta el dato: editorialId'};
+    if(!fechaLanzamiento) return {status: 400, message: 'Falta el dato: fechaLanzamiento}'};
+    if(!titulo) return {status: 400, message: 'Falta el dato: titulo'};
+    if(!isbn) return {status: 400, message: 'Falta el dato: isbn'};
+    if(!numPaginacion) return {status: 400, message: 'Falta el dato: numPaginacion'};
+    if(!estadoId) return {status: 400, message: 'Falta el dato: estadoId'};
+
+    let date = new Date(fechaLanzamiento);
+
+    if(typeof id !== 'number') return {status: 400, message: `El dato 'Id: ${id}' no cumple con el formato`};
+    if(!(date && date.getFullYear()<=2040)) return {status: 400, message: `El dato 'Fecha: ${fechaLanzamiento}' no cumple con el formato`};
+    if(typeof autorId !== 'number') return {status: 400, message: `El dato 'autorId: ${autorId}' no cumple con el formato`};
+    if(typeof categoriaId !== 'number') return {status: 400, message: `El dato 'categoriaId: ${categoriaId}' no cumple con el formato`};
+    if(typeof editorialId !== 'number') return {status: 400, message: `El dato 'editorialId: ${editorialId}' no cumple con el formato`};
+    if(typeof titulo !== 'string') return {status: 400, message: `El dato 'titulo: ${titulo}' no cumple con el formato`};
+    if(typeof isbn !== 'string') return {status: 400, message: `El dato 'isbn: ${isbn}' no cumple con el formato`};
+    if(typeof numPaginacion !== 'number') return {status: 400, message: `El dato 'numPaginacion: ${numPaginacion}' no cumple con el formato`};
+    if(typeof estadoId !== 'number') return {status: 400, message: `El dato 'estadoId: ${estadoId}' no cumple con el formato`};
+
     config.method = "PUT";
     config.body = JSON.stringify(obj);
-    let res = await (await fetch(`${uri}/libro/${id}`, config)).json();
-    return res;
+    await fetch(`${uri}/libro/${id}`, config);
 }
 
-
-
-// console.log(await post({titulo:"Pepito", fecha: "2023-08-10"}));
+// console.log(await putOne({id: 1, autorId: 1, categoriaId: 1, editorialId: 1, fechaLanzamiento: "2040-10-02", titulo: "Celestina", isbn: "67890", numPaginacion: 250, estadoId: 1}));
+// console.log(await post({autorId: 1, categoriaId: 1, editorialId: 1, fechaLanzamiento: "2040-10-02", titulo: "Celestina", isbn: "67890", numPaginacion: 250, estadoId: 1}));
 // console.log(await getAll());
 // console.log(await deleteOne(1));
 
-// console.log(putOne({id:"123"}));
+
