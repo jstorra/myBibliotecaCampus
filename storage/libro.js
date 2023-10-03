@@ -1,14 +1,8 @@
-import env from "../config.js";
-import { validacionDato, validacionObj } from "./validaciones.js";
-const uri = `${env.ssl + env.hostName}:${env.port}`;
-const config = {
-  method: undefined,
-  headers: { "content-type": "application/json" },
-};
+import uri from "../config.js";
+import { getAll, getOne, post, deleteOne, putOne } from "../functions/solicitudes.js"
+import { validacionDato, validacionObj } from "../functions/validaciones.js";
 const endpoint = "/libro/";
-const primaryKey = {
-  id: "number",
-};
+const primaryKey = { id: "number" };
 const tabla = {
   autorId: "number",
   categoriaId: "number",
@@ -20,37 +14,23 @@ const tabla = {
   estadoId: "number",
 };
 
-const getAll = async () => {
-  config.method = "GET";
-  let res = await (await fetch(`${uri}${endpoint}`, config)).json();
-  return res;
-};
+console.log(await getAll({uri, endpoint}))
+console.log(await getOne({uri, endpoint, id}));
+obj = {
+  autorId: 2,
+  categoriaId: 5,
+  editorialId: 2,
+  fechaLanzamiento: "2039-10-02",
+  titulo: "La maquina del tiempo",
+  isbn: "63796",
+  numPaginacion: 100,
+  estadoId: 1
+}
+console.log(await post({obj, tabla}));
 
-const post = async (obj = {}) => {
-  let body = {};
-  try {
-    validacionObj(obj)
-    Object.entries(tabla).forEach((e) =>
-      Object.assign(
-        body,
-        validacionDato({ nombreCampo: e[0], valor: obj[e[0]], tipoEsperado: e[1] })
-      )
-    );
-  } catch (error) {
-    return { status: 400, message: error.message };
-  }
-  config.method = "POST";
-  config.body = JSON.stringify(body);
-  let res = await (await fetch(`${uri}${endpoint}`, config)).json();
-  return res;
-};
 
 const deleteOne = async (id) => {
-  if (typeof id !== "number")
-    return {
-      status: 400,
-      message: `El dato 'Id: ${id}' no cumple con el formato`,
-    };
+  if (typeof id !== "number") return { status: 400, message: `El dato Id: ${id} no cumple con el formato` };
   config.method = "DELETE";
   await fetch(`${uri}${endpoint}${id}`, config);
 };
@@ -62,36 +42,26 @@ const putOne = async (obj = {}) => {
     validacionDato({
       nombreCampo: Object.keys(primaryKey)[0],
       valor: obj.id,
-      tipoEsperado: Object.values(primaryKey)[0],
+      tipoEsperado: Object.values(primaryKey)[0]
     });
+    let data = await getOne(obj.id)
+    obj = {...data, ...obj}
     Object.entries(tabla).forEach((e) =>
       Object.assign(
         body,
         validacionDato({ nombreCampo: e[0], valor: obj[e[0]], tipoEsperado: e[1] })
       )
     );
-  } catch (error) {
-    return { status: 400, message: error.message };
-  }
+  } catch (error) { return { status: 400, message: error.message }; }
   config.method = "PUT";
-  config.body = JSON.stringify(obj);
+  config.body = JSON.stringify(body);
   await fetch(`${uri}${endpoint}${obj.id}`, config);
 };
 
 // console.log(await getAll());
 
-// console.log(
-//   await post({
-//     autorId: 2,
-//     categoriaId: 5,
-//     editorialId: 2,
-//     fechaLanzamiento: "2039-10-02",
-//     titulo: "La maquina del tiempo",
-//     isbn: "63796",
-//     numPaginacion: 100,
-//     estadoId: 1,
-//   })
-// );
+
+
 
 // console.log(
 //   await putOne({
@@ -103,7 +73,7 @@ const putOne = async (obj = {}) => {
 //     titulo: "Celestina",
 //     isbn: "67890",
 //     numPaginacion: 250,
-//     estadoId: 1,
+//     estadoId: 1
 //   })
 // );
 

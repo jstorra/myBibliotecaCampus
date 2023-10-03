@@ -2,7 +2,19 @@
   "categoria": [],
   "editorial": [],
   "estado_libro": [],
-  "libro": [],
+  "libro": [
+    {
+      "autorId": 2,
+      "categoriaId": 5,
+      "editorialId": 2,
+      "fechaLanzamiento": "2039-10-02",
+      "titulo": "La maquina del tiempo",
+      "isbn": "63796",
+      "numPaginacion": 200,
+      "estadoId": 3,
+      "id": 1
+    }
+  ],
   "prestamo": [],
   "reserva": [],
   "autor": [],
