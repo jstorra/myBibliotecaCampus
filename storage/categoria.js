@@ -1,43 +1,17 @@
-import env from "../config.js";
-const uri = `${env.ssl + env.hostName}:${env.port}`
-const config = {method: undefined, headers: {"content-type": "application/json"}}
+import uri from "../config.js";
+import { getAll, getOne, post, putOne, deleteOne} from "../functions/solicitudes.js";
+const endpoint = "/categoria/";
+const tabla = {
+    nombre: "string"
+};
+// console.log(await getAll({uri, endpoint}))
+// console.log(await getOne({id, uri, endpoint}));
+// console.log(await deleteOne({id: 1, uri, endpoint}));
 
-const getAll = async () => {
-    config.method = "GET"
-    let res = await (await fetch(`${uri}/categoria`, config)).json()
-    return res
-}
+// FOR TEST POST
+// const obj = {autorId: 2,categoriaId: 5,editorialId: 2,fechaLanzamiento: "2039-10-02",titulo: "La maquina del tiempo",isbn: "63796",numPaginacion: 100,estadoId: 1};
+// console.log(await post({obj, tabla, uri, endpoint}));
 
-const post = async (obj = {nombre: "nombre"}) => {
-    let {nombre} = obj
-    if (!nombre) return {status: 400, message: 'Falta el dato: nombre'};
-    if (typeof nombre !== 'string') return {status: 400, message: `El dato 'Nombre: ${nombre}' no cumple con el formato`};
-    config.method = "POST"
-    config.body = JSON.stringify(obj)
-    await fetch(`${uri}/categoria`, config)
-}
-
-const deleteOne = async (id) =>{
-    if(typeof id !== 'number') return {status: 400, message: `El dato 'Id: ${id}' no cumple con el formato`};
-    config.method = "DELETE";
-    await fetch(`${uri}/categoria/${id}`, config)
-}
-
-const putOne = async (obj = {id: "id", nombre: "nombre"}) => {
-    let {id, nombre} = obj
-    if (!id) return {status: 400, message: 'Falta el dato: id'};
-    if (!nombre) return {status: 400, message: 'Falta el dato: nombre'};
-    if (typeof id !== 'number') return {status: 400, message: `El dato 'Id: ${id}' no cumple con el formato`};
-    if (typeof nombre !== 'string') return {status: 400, message: `El dato 'Nombre: ${nombre}' no cumple con el formato`};
-    config.method = "PUT"
-    config.body = JSON.stringify(obj)
-    await fetch(`${uri}/categoria/${id}`, config)
-}
-
-// console.log(await getAll());
-
-// console.log(await post({nombre: "ciencia-ficcion"}));
-
-// console.log(await deleteOne(3));
-
-// console.log(await putOne({id: 3, nombre: "ciencia-ficcion"}));
+// FOR TEST PUT
+// const obj = {id: 1,autorId: 1,categoriaId: 1,editorialId: 1,fechaLanzamiento: "2040-10-02",titulo: "Celestina",isbn: "67890",numPaginacion: 250,estadoId: 1}
+// console.log(await putOne({obj, tabla, uri, endpoint}));
