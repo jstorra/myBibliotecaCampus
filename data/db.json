@@ -5,7 +5,14 @@
       "id": 1
     }
   ],
-  "editorial": [],
+  "editorial": [
+    {
+      "nombre": "drama",
+      "direccion": "calle 1#02-56",
+      "telefono": "3172660389",
+      "id": 1
+    }
+  ],
   "estado_libro": [],
   "libro": [
     {

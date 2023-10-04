@@ -20,5 +20,5 @@ const tabla = {
 // console.log(await post({obj, tabla, uri, endpoint}));
 
 // FOR TEST PUT
-const obj = {id: 1,autorId: 1,categoriaId: 1,editorialId: 1,fechaLanzamiento: "2040-10-02",titulo: "Celestina",isbn: "67890",numPaginacion: 250,estadoId: 1}
-console.log(await putOne({obj, tabla, uri, endpoint}));
+// const obj = {id: 1,autorId: 1,categoriaId: 1,editorialId: 1,fechaLanzamiento: "2040-10-02",titulo: "Celestina",isbn: "67890",numPaginacion: 250,estadoId: 1}
+// console.log(await putOne({obj, tabla, uri, endpoint}));
