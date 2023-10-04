@@ -43,7 +43,16 @@
       "id": 1
     }
   ],
-  "reserva": [],
+  "reserva": [
+    {
+      "usuarioId": 1,
+      "libroId": 1,
+      "fechaReserva": "2039-10-02",
+      "fechaReservaFin": "2040-10-02",
+      "estado": "mantenimiento",
+      "id": 1
+    }
+  ],
   "autor": [],
   "usuario": []
 }
