@@ -57,8 +57,14 @@
     {
       "nombre": "ricardo",
       "apellido": "gomez",
-      "nacionalidad": "español",
+      "nacionalidad": "colombiano",
       "id": 1
+    },
+    {
+      "nombre": "juanito",
+      "apellido": "perez",
+      "nacionalidad": "peruano",
+      "id": 2
     }
   ],
   "usuario": [

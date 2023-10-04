@@ -1,5 +1,4 @@
-import uri from "../config.js";
-import { getAll, getOne, post, putOne, deleteOne} from "../functions/solicitudes.js";
+import crud from "../functions/crud.js"
 const endpoint = "/usuario/";
 const tabla = {
     nombre: "string",
@@ -8,14 +7,17 @@ const tabla = {
     telefono: "string",
     email: "string"
 };
-// console.log(await getAll({uri, endpoint}))
-// console.log(await getOne({id, uri, endpoint}));
-// console.log(await deleteOne({id: 1, uri, endpoint}));
+const c = crud({ endpoint, tabla })
+export default c
+
+// console.log(await c.getAll())
+// console.log(await c.getOne());
+// console.log(await c.deleteOne());
 
 // FOR TEST POST
 // const obj = {nombre: "mauricio",apellido: "duran",direccion: "no me la conteis",telefono: "3213779030",email: "nose@gmail.com"};
-// console.log(await post({obj, tabla, uri, endpoint}));
+// console.log(await c.post({obj, tabla, endpoint}));
 
 // FOR TEST PUT
 // const obj = {id: 1,nombre: "juan",apellido: "duran",direccion: "no me la conteis",telefono: "3213779030",email: "nose@gmail.com"}
-// console.log(await putOne({obj, tabla, uri, endpoint}));
+// console.log(await c.putOne({obj, tabla, endpoint}));
