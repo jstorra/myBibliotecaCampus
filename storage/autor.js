@@ -1,21 +1,19 @@
 import uri from "../config.js";
 import { getAll, getOne, post, putOne, deleteOne} from "../functions/solicitudes.js";
-const endpoint = "/reserva/";
+const endpoint = "/autor/";
 const tabla = {
-    usuarioId: "number",
-    libroId: "number",
-    fechaReserva: "date",
-    fechaReservaFin: "date",
-    estado: "string"
+    nombre: "string",
+    apellido: "string",
+    nacionalidad: "string"
 };
 // console.log(await getAll({uri, endpoint}))
 // console.log(await getOne({id, uri, endpoint}));
 // console.log(await deleteOne({id: 1, uri, endpoint}));
 
 // FOR TEST POST
-// const obj = {usuarioId: 1,libroId: 1,fechaReserva: "2039-10-02",fechaReservaFin: "2040-10-02",estado: "mantenimiento"};
+// const obj = {nombre: "ricardo",apellido: "gomez",nacionalidad: "colombiano"};
 // console.log(await post({obj, tabla, uri, endpoint}));
 
 // FOR TEST PUT
-// const obj = {id: 1,usuarioId: 1,libroId: 1,fechaReserva: "2039-10-02",fechaReservaFin: "2040-10-02",estado: "reservado"}
+// const obj = {id: 1,nombre: "ricardo",apellido: "gomez",nacionalidad: "español"}
 // console.log(await putOne({obj, tabla, uri, endpoint}));
