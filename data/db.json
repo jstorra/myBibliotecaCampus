@@ -13,7 +13,13 @@
       "id": 1
     }
   ],
-  "estado_libro": [],
+  "estado_libro": [
+    {
+      "nombre": "mantenimiento",
+      "descripcion": "Se encuentra en mantenimiento el libro La maquina del tiempo",
+      "id": 1
+    }
+  ],
   "libro": [
     {
       "autorId": 2,
