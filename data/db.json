@@ -33,7 +33,16 @@
       "id": 1
     }
   ],
-  "prestamo": [],
+  "prestamo": [
+    {
+      "usuarioId": 1,
+      "libroId": 1,
+      "fechaPrestamo": "2039-10-02",
+      "fechaDevolucion": "2040-10-02",
+      "estado": "mantenimiento",
+      "id": 1
+    }
+  ],
   "reserva": [],
   "autor": [],
   "usuario": []
