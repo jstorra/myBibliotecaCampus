@@ -61,5 +61,22 @@
       "id": 1
     }
   ],
-  "usuario": []
+  "usuario": [
+    {
+      "nombre": "juan",
+      "apellido": "duran",
+      "direccion": "no me la conteis",
+      "telefono": "3213779030",
+      "email": "nose@gmail.com",
+      "id": 1
+    },
+    {
+      "nombre": "mauricio",
+      "apellido": "duran",
+      "direccion": "no me la conteis",
+      "telefono": "3213779030",
+      "email": "nose@gmail.com",
+      "id": 2
+    }
+  ]
 }
