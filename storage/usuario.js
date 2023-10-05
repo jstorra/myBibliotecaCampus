@@ -16,8 +16,8 @@ export default c
 
 // FOR TEST POST
 // const obj = {nombre: "mauricio",apellido: "duran",direccion: "no me la conteis",telefono: "3213779030",email: "nose@gmail.com"};
-// console.log(await c.post({obj, tabla, endpoint}));
+// console.log(await c.post(obj));
 
 // FOR TEST PUT
 // const obj = {id: 1,nombre: "juan",apellido: "duran",direccion: "no me la conteis",telefono: "3213779030",email: "nose@gmail.com"}
-// console.log(await c.putOne({obj, tabla, endpoint}));
+// console.log(await c.putOne(obj));

@@ -16,8 +16,8 @@ export default c
 
 // FOR TEST POST
 // const obj = {usuarioId: 1,libroId: 1,fechaReserva: "2039-10-02",fechaReservaFin: "2040-10-02",estado: "mantenimiento"};
-// console.log(await c.post({obj, tabla, endpoint}));
+// console.log(await c.post(obj));
 
 // FOR TEST PUT
-// const obj = {id: 1,usuarioId: 1,libroId: 1,fechaReserva: "2039-10-02",fechaReservaFin: "2040-10-02",estado: "reservado"}
-// console.log(await c.putOne({obj, tabla, endpoint}));
+const obj = {id: 1,usuarioId: 1,libroId: 2,fechaReserva: "2039-10-02",fechaReservaFin: "2040-10-02",estado: "reservado"}
+console.log(await c.putOne(obj));

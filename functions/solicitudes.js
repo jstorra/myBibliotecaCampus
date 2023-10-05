@@ -1,5 +1,5 @@
 import uri from "../config.js";
-import { validacionDato, validacionObj } from "../functions/validaciones.js";
+import { validacionDato, validacionObj, validacionIds } from "../functions/validaciones.js";
 const config = { headers: { "content-type": "application/json" } };
 
 const getAll = async ({ endpoint } = {}) => {
@@ -16,6 +16,17 @@ const getOne = async ({ id, endpoint } = {}) => {
     return await res.json()
 } 
 
+// const getRelationships = async({ endpoint })=>{
+//     let res = await (await fetch(`${uri}${endpoint}`)).json();
+//     res = await Promise.all(res.map(async(data)=>{
+//         let [cat, aut] = await Promise.all([getOneCategoria(data.categoriaId), getOneAutor(data.autorId)])
+//         data.categoriaId = cat;
+//         data.autorId = aut;
+//         return data;
+//     }))
+//     return res;
+// }
+
 const post = async ({ obj, tabla = {}, endpoint } = {}) => {
     if (!endpoint) return { status: 400, message: 'Envía el Endpoint por favor.'}
     let body = {};
@@ -23,6 +34,7 @@ const post = async ({ obj, tabla = {}, endpoint } = {}) => {
         validacionObj(obj)
         validacionObj(tabla)
         Object.entries(tabla).forEach((e) => Object.assign(body,validacionDato({ nombreCampo: e[0], valor: obj[e[0]], tipoEsperado: e[1] })));
+        await validacionIds({ obj, uri })
     } catch (error) { return { status: 400, message: error.message }; }
     config.method = "POST";
     config.body = JSON.stringify(body);
@@ -40,6 +52,7 @@ const putOne = async ({ obj, tabla = {}, endpoint } = {}) => {
         let data = await getOne({ id: obj.id, uri, endpoint })
         obj = {...data, ...obj}
         Object.entries(tabla).forEach((e) => Object.assign(body,validacionDato({ nombreCampo: e[0], valor: obj[e[0]], tipoEsperado: e[1] })));
+        await validacionIds({ obj, uri })
     } catch (error) { return { status: 400, message: error.message }; }
     config.method = "PUT";
     config.body = JSON.stringify(body);
