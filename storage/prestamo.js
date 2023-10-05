@@ -12,6 +12,7 @@ export default c
 
 // console.log(await c.getAll())
 // console.log(await c.getOne());
+// console.log(await c.getRelationships())
 // console.log(await c.deleteOne());
 
 // FOR TEST POST

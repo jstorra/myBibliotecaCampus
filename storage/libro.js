@@ -1,5 +1,5 @@
 import crud from "../functions/crud.js"
-const endpoint = "/libro/";
+const endpoint = "/libros/";
 const tabla = {
     autorId: "number",
     categoriaId: "number",
@@ -15,6 +15,7 @@ export default c
 
 // console.log(await c.getAll())
 // console.log(await c.getOne(1));
+// console.log(await c.getRelationships())
 // console.log(await c.deleteOne());
 
 // FOR TEST POST
