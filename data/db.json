@@ -23,8 +23,8 @@
   "libro": [
     {
       "autorId": 2,
-      "categoriaId": 5,
-      "editorialId": 2,
+      "categoriaId": 1,
+      "editorialId": 1,
       "fechaLanzamiento": "2039-10-02",
       "titulo": "La maquina del tiempo",
       "isbn": "63796",
