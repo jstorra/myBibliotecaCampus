@@ -1,11 +1,15 @@
 {
-  "categoria": [
+  "categorias": [
     {
       "nombre": "drama",
       "id": 1
+    },
+    {
+      "nombre": "horror",
+      "id": 2
     }
   ],
-  "editorial": [
+  "editorials": [
     {
       "nombre": "drama",
       "direccion": "calle 1#02-56",
@@ -13,7 +17,7 @@
       "id": 1
     }
   ],
-  "estado_libro": [
+  "estados": [
     {
       "nombre": "mantenimiento",
       "descripcion": "Se encuentra en mantenimiento el libro La maquina del tiempo",
@@ -53,7 +57,7 @@
       "id": 1
     }
   ],
-  "autor": [
+  "autors": [
     {
       "nombre": "ricardo",
       "apellido": "gomez",
@@ -67,7 +71,7 @@
       "id": 2
     }
   ],
-  "usuario": [
+  "usuarios": [
     {
       "nombre": "juan",
       "apellido": "duran",

@@ -1,5 +1,5 @@
 import crud from "../functions/crud.js"
-const endpoint = "/usuario/";
+const endpoint = "/usuarios/";
 const tabla = {
     nombre: "string",
     apellido: "string",

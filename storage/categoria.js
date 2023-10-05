@@ -1,5 +1,5 @@
 import crud from "../functions/crud.js"
-const endpoint = "/categoria/";
+const endpoint = "/categorias/";
 const tabla = {
     nombre: "string"
 };
@@ -11,7 +11,7 @@ export default c
 // console.log(await c.deleteOne());
 
 // FOR TEST POST
-// const obj = {nombre: "drama"};
+// const obj = {nombre: "horror"};
 // console.log(await c.post(obj));
 
 // FOR TEST PUT

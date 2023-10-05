@@ -8,13 +8,13 @@ const tabla = {
     titulo: "string",
     isbn: "string",
     numPaginacion: "number",
-    estadoId: "number",
+    estadoId: "number"
 };
 const c = crud({ endpoint, tabla })
 export default c
 
 // console.log(await c.getAll())
-// console.log(await c.getOne());
+// console.log(await c.getOne(1));
 // console.log(await c.deleteOne());
 
 // FOR TEST POST

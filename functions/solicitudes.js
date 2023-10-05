@@ -4,8 +4,10 @@ const config = { headers: { "content-type": "application/json" } };
 
 const getAll = async ({ endpoint } = {}) => {
     if (!endpoint) return { status: 400, message: 'Envía el Endpoint por favor.'}
-    return await (await fetch(`${uri}${endpoint}`)).json();
-} 
+    const res = await (await fetch(`${uri}${endpoint}`)).json()
+    const data = res.map((e) => Object.keys(e).length > 0 ? res: { message: "No hay datos para mostrar"})
+    return data[0]
+}
 
 const getOne = async ({ id, endpoint } = {}) => {
     if (!id) return { status: 400, message: 'Envía el Id por favor.'}
@@ -13,19 +15,9 @@ const getOne = async ({ id, endpoint } = {}) => {
     if (!endpoint) return { status: 400, message: 'Envía el Endpoint por favor.'}
     let res = await fetch(`${uri}${endpoint}${id}`)
     if (res.status === 404) return { status: res.status, message: res.statusText}
-    return await res.json()
-} 
-
-// const getRelationships = async({ endpoint })=>{
-//     let res = await (await fetch(`${uri}${endpoint}`)).json();
-//     res = await Promise.all(res.map(async(data)=>{
-//         let [cat, aut] = await Promise.all([getOneCategoria(data.categoriaId), getOneAutor(data.autorId)])
-//         data.categoriaId = cat;
-//         data.autorId = aut;
-//         return data;
-//     }))
-//     return res;
-// }
+    res = await res.json()
+    return Object.keys(res).length > 1 ? res : { message: "No hay datos para mostrar"}
+}
 
 const post = async ({ obj, tabla = {}, endpoint } = {}) => {
     if (!endpoint) return { status: 400, message: 'Envía el Endpoint por favor.'}
