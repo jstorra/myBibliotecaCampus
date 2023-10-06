@@ -16,7 +16,7 @@ export default c
 // console.log(await c.deleteOne());
 
 // FOR TEST POST
-// const obj = {usuarioId: 1,libroId: 1,fechaReserva: "2039-10-02",fechaReservaFin: "2040-10-02",estado: "mantenimiento"};
+// const obj = {usuarioId: 2,libroId: 3,fechaReserva: "2039-10-02",fechaReservaFin: "2040-10-02",estado: "mantenimiento"};
 // console.log(await c.post(obj));
 
 // FOR TEST PUT

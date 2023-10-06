@@ -29,6 +29,7 @@ const getRelationships = async({ endpoint })=>{
     res = await (await fetch(query)).json()
     res = res.map(obj => {
         let data = {...obj}
+        console.log(data)
         foreignKeys.forEach(fkey => {
             data[fkey] = data[fkey.split("I")[0]]
             delete data[fkey.split("I")[0]]
