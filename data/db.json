@@ -11,10 +11,16 @@
   ],
   "editorials": [
     {
-      "nombre": "drama",
+      "nombre": "Norma",
       "direccion": "calle 1#02-56",
       "telefono": "3172660389",
       "id": 1
+    },
+    {
+      "nombre": "Looney",
+      "direccion": "calle 1#04-24",
+      "telefono": "2824991551",
+      "id": 2
     }
   ],
   "estados": [
@@ -96,6 +102,12 @@
       "apellido": "perez",
       "nacionalidad": "peruano",
       "id": 2
+    },
+    {
+      "nombre": "manguito",
+      "apellido": "choclo",
+      "nacionalidad": "peruano",
+      "id": 3
     }
   ],
   "usuarios": [
