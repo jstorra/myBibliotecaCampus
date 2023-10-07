@@ -41,7 +41,7 @@ li {
 /* SIDEBAR */
 #sidebar {
 	position: fixed;
-	max-width: 260px;
+	max-width: 230px;
 	width: 100%;
 	background: var(--light);
 	top: 0;
@@ -137,8 +137,8 @@ li {
 /* CONTENT */
 #content {
 	position: relative;
-	width: calc(100% - 260px);
-	left: 260px;
+	width: calc(100% - 230px);
+	left: 230px;
 	transition: all .3s ease;
 }
 #sidebar.hide + #content {
@@ -197,7 +197,7 @@ main .breadcrumbs li.divider {
 main .info-data {
 	margin-top: 36px;
 	display: grid;
-	grid-template-columns: 1fr 3fr;
+	grid-template-rows: auto 1fr;
 	grid-gap: 20px;
 }
 main .info-data .card {
@@ -209,12 +209,16 @@ main .info-data .card {
 	background: var(--light);
 	box-shadow: 4px 4px 16px rgba(0, 0, 0, .05);
 }
+
+main .info-data .card-form {
+	justify-items: center;
+}
 /* MAIN */
 /* CONTENT */
 
 .card .subtitle {
 	font-size: 30px;
-	text-align: center;
+	vertical-align: middle;
 }
 
 label {
@@ -222,13 +226,47 @@ label {
 }
 
 input {
-	width: 100%;
+	border: none;
+	border-bottom: 2px solid blue;
+	font-size: 16px;
 }
 
-.card-form {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	margin: 30px 0;
+input:focus {
+	outline: none;
+}
+
+.btnSubmit {
+	cursor: pointer;
+	border: none;
+	width: 100%;
+	grid-column: 1 / 3;
+	padding: 10px 0;
+	font-weight: 600;
+	background-color: #81D43A;
+	border-radius: 10px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.btnSubmit:hover {
+	outline: 2px solid black;
+}
+
+
+form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin: 20px 0;
+	width: 60%;
+	max-width: 600px;
+	column-gap: 50px;
+	row-gap: 20px;
+	min-width: 180px;
+}
+
+
+@media  screen and (width <= 590px) {
+	form {
+		grid-template-columns: 1fr;
+	}
 }
