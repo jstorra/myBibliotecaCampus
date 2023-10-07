@@ -1,18 +1,18 @@
-import autor from "../storage/autor.js"
-import categoria from "../storage/categoria.js"
-import editorial from "../storage/editorial.js"
-import estado from "../storage/estado.js"
+import autor from "../storage/autor.js";
+import categoria from "../storage/categoria.js";
+import editorial from "../storage/editorial.js";
+import estado from "../storage/estado.js";
 
 export const libroMain = async () => {
- let autores = await autor.getAll()
- let categorias = await categoria.getAll()
- let editoriales = await editorial.getAll()
- let estados = await estado.getAll()
- autores = autores.map(autor =>`<option value="${autor.id}. ${autor.nombre} ${autor.apellido}"></option>`)
- categorias = categorias.map(categoria =>`<option value="${categoria.id}. ${categoria.nombre}"></option>`)
- editoriales = editoriales.map(editorial =>`<option value="${editorial.id}. ${editorial.nombre}"></option>`)
- estados = estados.map(estado =>`<option value="${estado.id}. ${estado.nombre}"></option>`)
-return `
+    let autores = await autor.getAll();
+    let categorias = await categoria.getAll();
+    let editoriales = await editorial.getAll();
+    let estados = await estado.getAll();
+    autores = autores.map((autor) =>`<option value="${autor.id}. ${autor.nombre} ${autor.apellido}"></option>`);
+    categorias = categorias.map((categoria) =>`<option value="${categoria.id}. ${categoria.nombre}"></option>`);
+    editoriales = editoriales.map((editorial) =>`<option value="${editorial.id}. ${editorial.nombre}"></option>`);
+    estados = estados.map((estado) => `<option value="${estado.id}. ${estado.nombre}"></option>`);
+    return `
 <!-- MAIN -->
     <main>
         <h1 class="title">Libros</h1>
@@ -81,4 +81,5 @@ return `
         </div>
     </main>
 <!-- MAIN -->
-`}
+`;
+};
