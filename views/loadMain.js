@@ -24,46 +24,39 @@ return `
             <li><a href="#" class="active">Libros</a></li>
         </ul>
         <div class="info-data">
-            <div class="card">
+            <div class="card card-form">
                 <h2 class="subtitle">Crear libro</h2>
-                <form class="card-form">
+                <form>
 
-                    <label>Titulo</label>
-                    <input type="text" name="titulo">
+                    <input type="text" name="titulo" placeholder="Titulo">
 
-                    <label>Autor</label>
-                    <input list="autores" name="autorId">
+                    <input list="estados" name="estadoId" placeholder="Estado">
+                    <datalist id="estados">
+                        ${estados.join("")}
+                    </datalist>
+                    
+                    <input list="autores" name="autorId" placeholder="Autor">
                     <datalist id="autores">
                         ${autores.join("")}
                     </datalist>
 
-                    <label>Páginas</label>
-                    <input type="text" name="numPaginacion" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                    <input type="text" name="numPaginacion" placeholder="# Páginas" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
 
-                    <label>ISBN</label>
-                    <input type="text" name="isbn">
-
-                    <label>Fecha de Lanzamiento</label>
-                    <input type="date" name="fechaLanzamiento">
-
-                    <label>Categoria</label>
-                    <input list="categorias" name="categoriaId">
+                    <input list="categorias" name="categoriaId" placeholder="Categoria">
                     <datalist id="categorias">
                         ${categorias.join("")}
                     </datalist>
-
-                    <label>Editorial</label>
-                    <input list="editoriales" name="editorialId">
+                    
+                    <input type="text" name="isbn" placeholder="ISBN">
+                    
+                    <input list="editoriales" name="editorialId" placeholder="Editorial">
                     <datalist id="editoriales">
                         ${editoriales.join("")}
                     </datalist>
 
-                    <label>Estado</label>
-                    <input list="estados" name="estadoId">
-                    <datalist id="estados">
-                        ${estados.join("")}
-                    </datalist>
-                    <input type="submit" value="Guardar">
+                    <input id="inpFecha" type="text" name="fechaLanzamiento" placeholder="Fecha de Lanzamiento">
+                    
+                    <input class="btnSubmit" type="submit" value="Guardar">
                 </form>
             </div>
             <div class="card">
