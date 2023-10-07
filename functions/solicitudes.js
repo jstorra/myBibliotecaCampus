@@ -38,6 +38,23 @@ const getRelationships = async({ endpoint })=>{
     return res;
 }
 
+const getRelationshipsOne = async({ id, endpoint })=>{
+    if (!id) return { status: 400, message: 'Envía el Id por favor.'}
+    if (typeof id !== 'number') return { status: 400, message: 'El Id tiene un formato inválido.'}
+    if (!endpoint) return { status: 400, message: 'Envía el Endpoint por favor.' }
+    let res = await (await fetch(`${uri}${endpoint}`)).json();
+    let foreignKeys = []
+    res.forEach(data => {Object.keys(data).forEach(key => {{ if (key.includes("Id") && !foreignKeys.includes(key)) foreignKeys.push(key) }})})
+    let query = `${uri}${endpoint}${id}?`
+    foreignKeys.forEach(key => query += `_expand=${key.split("I")[0]}&`)
+    res = await (await fetch(query)).json()
+    foreignKeys.forEach(fkey => {
+        res[fkey] = res[fkey.split("I")[0]]
+        delete res[fkey.split("I")[0]]
+    })
+    return res;
+}
+
 const post = async ({ obj, tabla = {}, endpoint } = {}) => {
     if (!endpoint) return { status: 400, message: 'Envía el Endpoint por favor.'}
     let body = {};
@@ -80,4 +97,4 @@ const deleteOne = async ({ id, endpoint } = {}) => {
     if (res.status === 200 || res.status === 404) return { status: res.status, message: res.statusText }
 }
 
-export default { getAll, getOne, getRelationships, post, putOne, deleteOne }
+export default { getAll, getOne, getRelationships, getRelationshipsOne, post, putOne, deleteOne }

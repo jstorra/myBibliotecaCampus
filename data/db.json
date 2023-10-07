@@ -33,36 +33,29 @@
   "libros": [
     {
       "autorId": 2,
-      "categoriaId": 1,
-      "editorialId": 1,
-      "fechaLanzamiento": "2039-10-02",
-      "titulo": "La maquina del tiempo",
-      "isbn": "63796",
-      "numPaginacion": 100,
+      "categoriaId": 2,
+      "editorialId": 2,
+      "fechaLanzamiento": "2023-10-07",
+      "titulo": "cenicienta",
+      "isbn": "123",
+      "numPaginacion": 45,
       "estadoId": 1,
       "id": 1
-    }
-  ],
-  "prestamo": [
+    },
     {
-      "usuarioId": 1,
-      "libroId": 1,
-      "fechaPrestamo": "2039-10-02",
-      "fechaDevolucion": "2040-10-02",
-      "estado": "mantenimiento",
-      "id": 1
+      "autorId": 1,
+      "categoriaId": 2,
+      "editorialId": 2,
+      "fechaLanzamiento": "2023-10-07",
+      "titulo": "pepito",
+      "isbn": "123",
+      "numPaginacion": 45,
+      "estadoId": 1,
+      "id": 2
     }
   ],
-  "reserva": [
-    {
-      "usuarioId": 1,
-      "libroId": 1,
-      "fechaReserva": "2039-10-02",
-      "fechaReservaFin": "2040-10-02",
-      "estado": "mantenimiento",
-      "id": 1
-    }
-  ],
+  "prestamo": [],
+  "reserva": [],
   "autors": [
     {
       "nombre": "ricardo",
