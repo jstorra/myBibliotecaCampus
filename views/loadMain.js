@@ -57,6 +57,7 @@ return `
                     <input id="inpFecha" type="text" name="fechaLanzamiento" placeholder="Fecha de Lanzamiento">
                     
                     <input class="btnSubmit" type="submit" value="Guardar">
+                    
                 </form>
             </div>
             <div class="card">
