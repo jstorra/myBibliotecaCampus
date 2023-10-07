@@ -8,10 +8,10 @@ export const libroMain = async () => {
  let categorias = await categoria.getAll()
  let editoriales = await editorial.getAll()
  let estados = await estado.getAll()
- autores = autores.map(autor =>`<option value="${autor.nombre} ${autor.apellido}"></option>`)
- categorias = categorias.map(categoria =>`<option value="${categoria.nombre}"></option>`)
- editoriales = editoriales.map(editorial =>`<option value="${editorial.nombre}"></option>`)
- estados = estados.map(estado =>`<option value="${estado.nombre}"></option>`)
+ autores = autores.map(autor =>`<option value="${autor.id}. ${autor.nombre} ${autor.apellido}"></option>`)
+ categorias = categorias.map(categoria =>`<option value="${categoria.id}. ${categoria.nombre}"></option>`)
+ editoriales = editoriales.map(editorial =>`<option value="${editorial.id}. ${editorial.nombre}"></option>`)
+ estados = estados.map(estado =>`<option value="${estado.id}. ${estado.nombre}"></option>`)
 return `
 <!-- MAIN -->
     <main>
@@ -38,7 +38,7 @@ return `
                     </datalist>
 
                     <label>Páginas</label>
-                    <input type="number" name="numPaginacion">
+                    <input type="text" name="numPaginacion" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
 
                     <label>ISBN</label>
                     <input type="text" name="isbn">
@@ -47,7 +47,7 @@ return `
                     <input type="date" name="fechaLanzamiento">
 
                     <label>Categoria</label>
-                    <input list="categorias" name="">
+                    <input list="categorias" name="categoriaId">
                     <datalist id="categorias">
                         ${categorias.join("")}
                     </datalist>
@@ -63,19 +63,26 @@ return `
                     <datalist id="estados">
                         ${estados.join("")}
                     </datalist>
-                    </form>
-                    <button type"submit" for="card-form">Guardar<i class='bx bxs-book-add'></i></button>
+                    <input type="submit" value="Guardar">
+                </form>
             </div>
             <div class="card">
-                <div class="head">
-                    <div>
-                        <h2>234</h2>
-                        <p>Sales</p>
-                    </div>
-                    <i class='bx bx-trending-down icon down' ></i>
-                </div>
-                <span class="progress" data-value="60%"></span>
-                <span class="label">60%</span>
+                <table id="table" class="table">
+                    <thead>
+                        <tr>
+                        <th>Id</th>
+                        <th>Titulo</th>
+                        <th>Autor</th>
+                        <th>Páginas</th>
+                        <th>ISBN</th>
+                        <th>Lanzamiento</th>
+                        <th>Categoria</th>
+                        <th>Editorial</th>
+                        <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myData"></tbody>
+                </table>
             </div>
         </div>
     </main>

@@ -41,17 +41,6 @@
       "numPaginacion": 100,
       "estadoId": 1,
       "id": 1
-    },
-    {
-      "autorId": 2,
-      "categoriaId": 2,
-      "editorialId": 1,
-      "fechaLanzamiento": "2040-10-02",
-      "titulo": "Celestina",
-      "isbn": "172841",
-      "numPaginacion": 100,
-      "estadoId": 1,
-      "id": 2
     }
   ],
   "prestamo": [
@@ -62,14 +51,6 @@
       "fechaDevolucion": "2040-10-02",
       "estado": "mantenimiento",
       "id": 1
-    },
-    {
-      "usuarioId": 2,
-      "libroId": 2,
-      "fechaPrestamo": "2039-10-02",
-      "fechaDevolucion": "2040-10-02",
-      "estado": "mantenimiento",
-      "id": 2
     }
   ],
   "reserva": [
@@ -80,14 +61,6 @@
       "fechaReservaFin": "2040-10-02",
       "estado": "mantenimiento",
       "id": 1
-    },
-    {
-      "usuarioId": 2,
-      "libroId": 2,
-      "fechaReserva": "2039-10-02",
-      "fechaReservaFin": "2040-10-02",
-      "estado": "mantenimiento",
-      "id": 2
     }
   ],
   "autors": [

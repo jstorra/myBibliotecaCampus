@@ -197,12 +197,13 @@ main .breadcrumbs li.divider {
 main .info-data {
 	margin-top: 36px;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	grid-template-columns: 1fr 3fr;
 	grid-gap: 20px;
 }
 main .info-data .card {
 	display: grid;
 	grid-template-rows: auto 1fr;
+	min-width: 240px;
 	padding: 20px;
 	border-radius: 10px;
 	background: var(--light);
