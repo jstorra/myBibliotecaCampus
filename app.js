@@ -1,12 +1,15 @@
 
 import { libroMain } from './views/loadMain.js'
 import libro from './storage/libro.js'
-import uri from './config.js'
 const content = document.querySelector("#content")
 
 addEventListener("DOMContentLoaded", async ()=> {
     content.insertAdjacentHTML("beforeend", await libroMain())
-    const form = document.querySelector(".card-form")
+    const form = document.querySelector("form")
+    const inpFecha = document.querySelector("#inpFecha")
+    inpFecha.addEventListener("focus", () => {
+        inpFecha.type="date"
+    })
     form.addEventListener("submit", async (e)=> {
         e.preventDefault()
         const data = Object.fromEntries(new FormData(e.target))
