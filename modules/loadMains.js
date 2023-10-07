@@ -1,4 +1,4 @@
-import { libroActions } from './loadActions.js'
+import { libroAction } from './loadActions.js'
 
 import autor from "../storage/autor.js";
 import categoria from "../storage/categoria.js";
@@ -27,7 +27,7 @@ export const libroMain = async (content) => {
             </ul>
             <div class="info-data">
                 <div class="card card-form">
-                    <h2 class="subtitle">Crear libro</h2>
+                    <h2 class="subtitle">Registrar libro</h2>
                     <form>
     
                         <input type="text" name="titulo" placeholder="Titulo" required>
@@ -66,15 +66,16 @@ export const libroMain = async (content) => {
                     <table id="table" class="table" border="1">
                         <thead>
                             <tr>
-                            <th># Id</th>
-                            <th>Titulo</th>
-                            <th>Autor</th>
-                            <th>Páginas</th>
-                            <th>ISBN</th>
-                            <th>Lanzamiento</th>
-                            <th>Categoria</th>
-                            <th>Editorial</th>
-                            <th>Estado</th>
+                                <th># Id</th>
+                                <th>Titulo</th>
+                                <th>Autor</th>
+                                <th>Páginas</th>
+                                <th>ISBN</th>
+                                <th>Lanzamiento</th>
+                                <th>Categoria</th>
+                                <th>Editorial</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody id="myData"></tbody>
@@ -84,5 +85,5 @@ export const libroMain = async (content) => {
         </main>
     <!-- MAIN -->
     `)
-    libroActions()
+    libroAction()
 };
