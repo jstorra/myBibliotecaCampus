@@ -1,151 +1,109 @@
-# Creación de JSON Server
+# Proyecto libreria
 
-- Ir directamente a [Clonación de repositorio y .gitignore](#clonarRepo)
+Proyecto sobre una libreria, este sistema permite registrar, actualizar y elimina registros de diferentes tipos, todo conectado a una base de datos tipo JSON y servidor creado con json-server.
 
-Primero que todo crearemos dos archivos los cuales seran `main.js` y `db.json`, estos archivos seran fundamentales para este proceso. Ahora en el archivo `db.json` debemos poner la siguiente estructura de ejemplo:
+## Secciones
 
-```
-{
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
-  ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "profile": { "name": "typicode" }
-}
-```
+-   [Requisitos](#requisitos)
+-   [Caracteristicas](#caracteristicas)
+-   [Tecnologias](#tecnologias-utilizadas)
+-   [Como funciona](#como-funciona)
+-   [Uso de App](#uso-de-app)
+-   [Contribución](#contribución)
+-   [Screenshots](#screenshots)
 
-Finalizados estos pasos, procederemos a la creación del JSON Server ejecutando los siguientes comandos **(solamente los enumerados)** y modificaciones:
+## Requisitos
 
-1. `npm init -y`:
+Primero que todo debes tener instalado Node, en caso de no tenerlo instalado descarga la version **LTS** de la pagina oficial https://nodejs.org/es.
 
-   - `npm init` es un comando que se utiliza para inicializar un proyecto de Node.js y crear un archivo `package.json`. El archivo `package.json` es un archivo de configuración que contiene información sobre el proyecto, sus dependencias y scripts personalizados.
-   - El flag `-y` o `--yes` se utiliza para aceptar automáticamente todas las opciones predeterminadas al crear el `package.json`, lo que significa que no te pedirá que confirmes cada una de las opciones, sino que utilizará las opciones predeterminadas para todo.
+Una vez instalado asegurate de tener npm incorporado en tu sistema **(al instalar Node por defecto se instala)** para eso puedes abrir la terminal y ejecutar el comando `npm -v`.
 
-   En resumen, `npm init -y` crea un archivo `package.json` en el directorio actual con las opciones predeterminadas sin preguntarte nada.
+## Caracteristicas
 
-   Al ejecutarse el comando se creara un archivo `package.json` con una estructura predefinida de la siguiente manera:
+-   Registrar, actualizar y eliminar **libros**
+-   Registrar, actualizar y eliminar **autores**
+-   Registrar, actualizar y eliminar **categorias**
+-   Registrar, actualizar y eliminar **editoriales**
+-   Registrar, actualizar y eliminar **estados**
+-   Registrar, actualizar y eliminar **prestamos**
+-   Registrar, actualizar y eliminar **reservas**
+-   Registrar, actualizar y eliminar **usuarios**
 
-   ```
-   {
-      "name": "tu-proyecto",
-      "version": "1.0.0",
-      "description": "",
-      "main": "main.js",
-      "scripts": {
-          "test": "echo \"Error: no test specified\" && exit 1"
-      },
-      "keywords": [],
-      "author": "",
-      "license": "ISC"
-   }
-   ```
+## Tecnologias utilizadas
 
-   Ten en cuenta que las propiedades `main` y `name` pueden tener un valor distinto ya que sus valores se toman automaticamente por el sistema, por lo general en la propiedad `main` ira nuestro archivo principal ya sea `app.js`, `index.js` o `main.js`.
+-   HTML
+-   CSS
+-   JavaScript (ES6)
+-   Node
 
----
+## Como funciona
 
-2. `npm -E -D install json-server`:
+-   **Principal**
 
-   - `npm install` se utiliza para instalar paquetes de Node.js y sus dependencias. En este caso, se está intentando instalar un paquete llamado `json-server`.
-   - El flag `-E` o `--save-exact` se utiliza para fijar la versión exacta del paquete en el `package.json`. Esto significa que la versión especificada del paquete se registrará en el archivo `package.json` con un prefijo `=` antes de la versión para indicar que es una versión exacta.
-   - El flag `-D` o `--save-dev` se utiliza para indicar que el paquete se debe agregar como una dependencia de desarrollo en el archivo `package.json`. Las dependencias de desarrollo son aquellas que se utilizan solo durante el desarrollo, como herramientas de construcción, pruebas, etc.
+    -   `index.html`: Proporciona una estructura básica para una página web de un proyecto de librería con una barra lateral de navegación y una barra de navegación superior. Los archivos de estilo y JavaScript se utilizan para darle estilo y funcionalidad a la página.
 
-   En resumen, `npm -E -D install json-server` instala el paquete `json-server` en el proyecto, fija la versión exacta en el `package.json` y lo registra como una dependencia de desarrollo. Esto significa que el paquete `json-server` será necesario para el desarrollo del proyecto, pero no se incluirá en las dependencias de producción cuando se distribuya el proyecto.
+    -   `app.js`: Código en JavaScript se utiliza para cambiar el contenido de una página web dinámicamente cuando se hace clic en enlaces específicos. Utiliza un módulo externo llamado "loadMains.js" para gestionar la carga de contenido en función de la página actual, y se dispara al cargar la página y al hacer clic en enlaces con identificadores específicos.
 
-   Una vez ejecutado el comando se creara un archivo `package-lock.json` y una carpeta `node_modules`, ademas nuestro archivo `package.json` se modificara y tendremos que agregarle una nueva propiedad llamada `type`, quedando de la siguiente manera:
+-   **Modules**
 
-   ```
-   {
-      "name": "tu-proyecto",
-      "version": "1.0.0",
-      "description": "",
-      "main": "main.js",
-      "type": "module",
-      "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-      },
-      "keywords": [],
-      "author": "",
-      "license": "ISC",
-      "devDependencies": {
-        "json-server": "0.17.3"
-      }
-   }
-   ```
+    -   `loadMains.js`: Cada función principal en el código se encarga de generar contenido HTML para diferentes secciones de la aplicación, como libros, categorías, editoriales, estados, autores, usuarios, préstamos y reservas. El código utiliza plantillas de cadena para crear formularios de registro y tablas de visualización de datos relacionados con estas entidades. Además, se importa un módulo llamado `cardsActions.js` para manejar las acciones asociadas con cada entidad, como guardar datos en el servidor.
 
-   Ahora debemos declarar que al ejecutar el comando `npm run dev` se ejecuten de forma instantanea todos los scripts previamente declarados, para finalizar con la creación del JSON Server debemos usar el comando `json-server --watch db.json` dentro de la propiedad `scripts` y renombrando su propiedad interna por `dev`:
+    -   `cardsActions`: Este código es un conjunto de funciones que se utilizan para gestionar diferentes aspectos de la aplicación web, como la creación, actualización y eliminación de registros en una base de datos, la visualización de datos en tablas HTML y la interacción con formularios. Cada función se encarga de una entidad específica en la aplicación, como libros, categorías, editoriales, etc. Además, se incluyen eventos y funciones para mostrar y modificar datos relacionados con estas entidades.
 
-   ```
-   {
-      "name": "tu-proyecto",
-      "version": "1.0.0",
-      "description": "",
-      "main": "main.js",
-      "type": "module",
-      "scripts": {
-        "dev": "json-server --watch db.json"
-      },
-      "keywords": [],
-      "author": "",
-      "license": "ISC",
-      "devDependencies": {
-        "json-server": "0.17.3"
-      }
-   }
-   ```
+    -   `btnsActions`: Este código exporta un conjunto de funciones que están diseñadas para manejar eventos de clic en botones HTML. Estas funciones se utilizan para interactuar con objetos de diferentes tipos, como libros, categorías, editoriales, estados, autores, usuarios, préstamos y reservas. El código se estructura de manera similar para cada tipo de objeto, por lo que se ha definido una serie de funciones genéricas para eliminar y modificar estos objetos.
 
-   Ahora ejecutaremos el siguiente comando en la terminal `npm run dev`, sí no hubo errores en los pasos anteriores nos saldra el siguiente mensaje:
+-   **Functions**
 
-   ```
-    \{^_^}/ hi!
+    -   `crud.js`: Este codigo proporciona un crud y esta enlazado con el modulo `solicitudes.js` para las siguientes funciones:
 
-    Loading db.json
-    Done
+        -   `getAll`: Recupera todos los registros de la tabla o endpoint especificado.
+        -   `getOne`: Recupera un registro específico por su ID.
+        -   `getRelationships`: Recupera relaciones entre registros en la tabla o endpoint.
+        -   `getRelationshipsOne`: Recupera relaciones específicas para un registro por su ID.
+        -   `post`: Crea un nuevo registro en la tabla o endpoint especificado.
+        -   `putOne`: Actualiza un registro existente en la tabla o endpoint.
+        -   `deleteOne`: Elimina un registro por su ID.
 
-    Resources
-    http://localhost:3000/posts
-    http://localhost:3000/comments
-    http://localhost:3000/profile
+    -   `validaciones.js`: Este código en JavaScript contiene tres funciones que se utilizan para validar datos y objetos. La primera función valida un campo de datos específico, la segunda verifica si un objeto no está vacío y la tercera verifica si las identificaciones en un objeto existen a través de solicitudes a una URI.
 
-    Home
-    http://localhost:3000
-   ```
+## Uso de App
 
-   En caso de querer modificar el puerto y el host usamos `CTRL + C` para salir del `json-server --watch` y usaremos `--port` y `--host` quedando de la siguiente manera:
+1. Clona este repositorio en tu máquina local:
 
-   ```
-   "scripts": {
-   "dev": "json-server --watch db.json --port 5010 --host 127.0.0.1"
-   },
-   ```
+    ```bash
+    git clone https://github.com/jstorra/proyecto-libreria.git
+    ```
 
-   Ejecutamos nuevamente `npm run dev` y nos saldra el siguiente mensaje:
+2. Ejecuta el comando `npm i`para instalar las dependencias necesarias para el funcionamiento del proyecto.
 
-   ```
-   Resources
-   http://127.0.0.1:5010/posts
-   http://127.0.0.1:5010/comments
-   http://127.0.0.1:5010/profile
+3. Ejecuta el comando `npm run dev` para levantar el servidor y guardar los registros en el archivo `db.json`.
 
-   Home
-   http://127.0.0.1:5010
-   ```
+4. Abre el archivo `index.html` en tu navegador web para ver la libreria en acción.
 
-Completada la creación del JSON Server ahora podemos hacer diferentes peticiones, usaremos como ejemplo `GET`, `POST`, `PUT` y `DELETE`, las cuales se encuentran en el archivo [main.js](main.js) comentadas para que se ejecuten una por una y ver su funcionamiento.
+## Contribución
 
-<div name="clonarRepo"></div>
+Si deseas contribuir a este proyecto, ¡te animamos a hacerlo! Puedes enviar problemas (issues) y solicitudes de extracción (pull requests) para proponer mejoras o correcciones.
 
-# Clonación de repositorio y `.gitignore`
+## Screenshots
 
-```bash
-git clone https://github.com/jstorra/myBibliotecaCampus.git
-```
-
-Al clonarse el repositorio el archivo `.gitignore` impedira que se cargen los archivos allí declarados como lo son `node_modules` y `package-lock.json` debido a que son archivos demasiado grandes que podrian generar conflictos al clonarse ó pushearse.
-
-Para que nos muestre estos dos archivos necesarios para el funcionamiento de nuestro proyecto debemos usar el comando por consola `npm i` el cual analizara a `package.json` e instalara las dependencias allí registradas, en este caso la de `json-server` y su versión correspondiente.
+<div align="center">
+  <p style="font-size: 20px; color: #1775f1"><b>Libros</b></p>
+  <img src="./img/libros.png">
+  <p style="font-size: 20px; color: #1775f1"><b>Categorias</b></p>
+  <img src="./img/categorias.png">
+  <p style="font-size: 20px; color: #1775f1"><b>Editoriales</b></p>
+  <img src="./img/editoriales.png">
+  <p style="font-size: 20px; color: #1775f1"><b>Estados</b></p>
+  <img src="./img/estados.png">
+  <p style="font-size: 20px; color: #1775f1"><b>Autores</b></p>
+  <img src="./img/autores.png">
+  <p style="font-size: 20px; color: #1775f1"><b>Usuarios</b></p>
+  <img src="./img/usuarios.png">
+  <p style="font-size: 20px; color: #1775f1"><b>Prestamos</b></p>
+  <img src="./img/prestamos.png">
+  <p style="font-size: 20px; color: #1775f1"><b>Reservas</b></p>
+  <img src="./img/reservas.png">
+</div>
 
 ---
 
