@@ -18,7 +18,7 @@ export const validacionIds = async ({obj, uri}) => {
   for (let key in obj){
     if (ids.includes(key)) {
       let res = await fetch(`${uri}/${key.split("I")[0]+"s"}/${obj[key]}`)
-      if (!res.ok) throw new Error(`El dato ${key} con valor ${obj[key]} no existe.`)
+      if (!res.ok) throw new Error(`El/la ${key.split("I")[0].toUpperCase()} no existe.`)
     }
   }
 }

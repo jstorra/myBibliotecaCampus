@@ -1,7 +1,7 @@
 {
   "categorias": [
     {
-      "nombre": "drama",
+      "nombre": "drama y horror",
       "id": 1
     },
     {
@@ -28,6 +28,11 @@
       "nombre": "mantenimiento",
       "descripcion": "Se encuentra en mantenimiento el libro La maquina del tiempo",
       "id": 1
+    },
+    {
+      "nombre": "no se que poner",
+      "descripcion": "nuevo estadito",
+      "id": 2
     }
   ],
   "libros": [
@@ -54,8 +59,42 @@
       "id": 2
     }
   ],
-  "prestamo": [],
-  "reserva": [],
+  "prestamo": [
+    {
+      "usuarioId": 1,
+      "libroId": 1,
+      "fechaPrestamo": "2039-10-02",
+      "fechaDevolucion": "2040-10-02",
+      "estado": "mantenimiento",
+      "id": 1
+    },
+    {
+      "usuarioId": 2,
+      "libroId": 2,
+      "fechaPrestamo": "2039-10-02",
+      "fechaDevolucion": "2040-10-02",
+      "estado": "no devuelto :(",
+      "id": 2
+    }
+  ],
+  "reserva": [
+    {
+      "usuarioId": 1,
+      "libroId": 1,
+      "fechaReserva": "2039-10-02",
+      "fechaReservaFin": "2040-10-16",
+      "estado": "mantenimiento",
+      "id": 1
+    },
+    {
+      "usuarioId": 2,
+      "libroId": 2,
+      "fechaReserva": "2020-06-17",
+      "fechaReservaFin": "2040-10-02",
+      "estado": "ocupadito",
+      "id": 2
+    }
+  ],
   "autors": [
     {
       "nombre": "ricardo",
