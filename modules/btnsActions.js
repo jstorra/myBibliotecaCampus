@@ -130,7 +130,7 @@ const usuarioBtnsModificar = ({btns, usuario}) => {
             document.querySelector(".inpDireccion").value = res.direccion
             document.querySelector(".inpTelefono").value = res.telefono
             document.querySelector(".inpEmail").value = res.email
-            await autor.putOne(Number(btn.dataset.mod))
+            await usuario.putOne(Number(btn.dataset.mod))
         })
     })
 }
