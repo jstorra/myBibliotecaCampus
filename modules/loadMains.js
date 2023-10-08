@@ -33,33 +33,33 @@ const libroMain = async (content) => {
                 <h2 class="subtitle">Registrar libro</h2>
                 <form class="form-libro">
 
-                    <input type="text" name="titulo" placeholder="Titulo" required>
+                    <input class="inpTitulo" type="text" name="titulo" placeholder="Titulo" required>
 
-                    <input list="estados" name="estadoId" placeholder="Estado" required>
+                    <input class="inpEstado" list="estados" name="estadoId" placeholder="Estado" required>
                     <datalist id="estados">
                         ${estados.join("")}
                     </datalist>
                     
-                    <input list="autores" name="autorId" placeholder="Autor" required>
+                    <input class="inpAutor" list="autores" name="autorId" placeholder="Autor" required>
                     <datalist id="autores">
                         ${autores.join("")}
                     </datalist>
 
-                    <input type="text" name="numPaginacion" placeholder="# Páginas" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+                    <input class="inpPaginas" type="text" name="numPaginacion" placeholder="# Páginas" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
 
-                    <input list="categorias" name="categoriaId" placeholder="Categoria" required>
+                    <input class="inpCategoria" list="categorias" name="categoriaId" placeholder="Categoria" required>
                     <datalist id="categorias">
                         ${categorias.join("")}
                     </datalist>
                     
-                    <input type="text" name="isbn" placeholder="ISBN">
+                    <input class="inpISBN" type="text" name="isbn" placeholder="ISBN">
                     
-                    <input list="editoriales" name="editorialId" placeholder="Editorial" required>
+                    <input class="inpEditorial" list="editoriales" name="editorialId" placeholder="Editorial" required>
                     <datalist id="editoriales">
                         ${editoriales.join("")}
                     </datalist>
                     
-                    <input id="inpFecha" type="text" name="fechaLanzamiento" placeholder="Fecha de Lanzamiento" required>
+                    <input class="inpFecha" type="text" name="fechaLanzamiento" placeholder="Fecha de Lanzamiento" required>
                     
                     <input class="btnSubmit" type="submit" value="Guardar">
                     

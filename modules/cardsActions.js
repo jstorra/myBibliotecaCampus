@@ -3,7 +3,7 @@ import b from "./btnsActions.js"
 
 const libroAction = async (libro) => {
     const form = document.querySelector("form")
-    const inpFecha = document.querySelector("#inpFecha")
+    const inpFecha = document.querySelector(".inpFecha")
     inpFecha.addEventListener("focus", () => {
         inpFecha.type="date"
     })

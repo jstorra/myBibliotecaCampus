@@ -11,21 +11,15 @@ const libroBtnsModificar = ({btns, libro}) => {
             document.querySelector(".btnSubmit").value = "actualizar"
             document.querySelector(".btnSubmit").setAttribute("data-edit", btn.dataset.mod)
             document.querySelector(".btnSubmit").style.backgroundColor = "orange"
-            const inputs = document.querySelectorAll("input[name]");
-            Object.keys(res).forEach(key => {
-                inputs.forEach(input => {
-                    if (key === input.getAttribute("name")){
-                        if (key === "autorId" || key === "usuarioId"){
-                            input.value = `${res[key].id}. ${res[key].nombre} ${res[key].apellido}`
-                        }
-                        else if (key.includes("Id")){
-                            input.value = `${res[key].id}. ${res[key].nombre}`
-                        } else {
-                            input.value = res[key]
-                        }
-                    }
-                })
-            })
+            console.log(res);
+            document.querySelector(".inpTitulo").value = res.titulo
+            document.querySelector(".inpPaginas").value = res.numPaginacion
+            document.querySelector(".inpISBN").value = res.isbn
+            document.querySelector(".inpFecha").value = res.fechaLanzamiento
+            document.querySelector(".inpAutor").value = `${res.autorId.id}. ${res.autorId.nombre} ${res.autorId.apellido}`
+            document.querySelector(".inpCategoria").value = `${res.categoriaId.id}. ${res.categoriaId.nombre}`
+            document.querySelector(".inpEstado").value = `${res.estadoId.id}. ${res.estadoId.nombre}`
+            document.querySelector(".inpEditorial").value = `${res.editorialId.id}. ${res.editorialId.nombre}`
             await libro.putOne(Number(btn.dataset.mod))
         })
     })
