@@ -280,7 +280,7 @@ const usuarioMain = (content) => {
                     <input class="inpApellido" type="text" name="apellido" placeholder="Apellido" required>
                     <input class="inpDireccion" type="text" name="direccion" placeholder="Dirección" required>
                     <input class="inpTelefono" type="text" name="telefono" placeholder="Telefono" required>
-                    <input class="inpEmail" type="text" name="email" placeholder="Email" required>
+                    <input class="inpEmail" type="email" name="email" placeholder="Email" required>
                     
                     <input class="btnSubmit" type="submit" value="Guardar">
                     

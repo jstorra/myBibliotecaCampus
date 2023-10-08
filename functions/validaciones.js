@@ -1,5 +1,6 @@
 export const validacionDato = ({ nombreCampo, valor, tipoEsperado }) => {
     if (valor.constructor.name.toLowerCase() === "string") valor = valor.trim()
+    if (nombreCampo === "email" && !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(valor)) throw new Error('El correo no es válido.')
     if (!valor) throw new Error(`El campo '${nombreCampo.split("Id")[0].toUpperCase()}' no está definido.`);
     if (tipoEsperado === "date") {
         valor = new Date(valor);
