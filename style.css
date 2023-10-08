@@ -100,6 +100,7 @@ li {
     justify-content: center;
     align-items: center;
     margin-right: 6px;
+    font-size: 20px;
 }
 #sidebar .side-menu {
     margin: 36px 0;
