@@ -6,7 +6,7 @@ export const validacionDato = ({ nombreCampo, valor, tipoEsperado }) => {
         valor = new Date(valor);
         if (isNaN(valor.getTime()) || !(valor.getFullYear() <= 2040)) throw new Error('La fecha no es válida.');
     }
-    if (valor.constructor.name.toLowerCase() !== tipoEsperado.toLowerCase()) throw new Error(`El campo '${nombreCampo.split("Id")[0].toUpperCase()}' tiene un formato inválido.`);
+    if (valor.constructor.name.toLowerCase() !== tipoEsperado.toLowerCase() || valor.constructor.name.toLowerCase() === "string" && valor.includes("<")) throw new Error(`El campo '${nombreCampo.split("Id")[0].toUpperCase()}' tiene un formato inválido.`);
     return { [nombreCampo]: valor.constructor.name.toLowerCase() === "date" ? valor.toISOString().split('T')[0] : valor };
 }
 
