@@ -11,7 +11,6 @@ const libroBtnsModificar = ({btns, libro}) => {
             document.querySelector(".btnSubmit").value = "actualizar"
             document.querySelector(".btnSubmit").setAttribute("data-edit", btn.dataset.mod)
             document.querySelector(".btnSubmit").style.backgroundColor = "orange"
-            console.log(res);
             document.querySelector(".inpTitulo").value = res.titulo
             document.querySelector(".inpPaginas").value = res.numPaginacion
             document.querySelector(".inpISBN").value = res.isbn
@@ -20,7 +19,6 @@ const libroBtnsModificar = ({btns, libro}) => {
             document.querySelector(".inpCategoria").value = `${res.categoriaId.id}. ${res.categoriaId.nombre}`
             document.querySelector(".inpEstado").value = `${res.estadoId.id}. ${res.estadoId.nombre}`
             document.querySelector(".inpEditorial").value = `${res.editorialId.id}. ${res.editorialId.nombre}`
-            await libro.putOne(Number(btn.dataset.mod))
         })
     })
 }
@@ -39,7 +37,6 @@ const categoriaBtnsModificar = ({btns, categoria}) => {
             document.querySelector(".btnSubmit").setAttribute("data-edit", btn.dataset.mod)
             document.querySelector(".btnSubmit").style.backgroundColor = "orange"
             document.querySelector(".inpNombre").value = res.nombre
-            await categoria.putOne(Number(btn.dataset.mod))
         })
     })
 }
@@ -60,7 +57,6 @@ const editorialBtnsModificar = ({btns, editorial}) => {
             document.querySelector(".inpNombre").value = res.nombre
             document.querySelector(".inpDireccion").value = res.direccion
             document.querySelector(".inpTelefono").value = res.telefono
-            await editorial.putOne(Number(btn.dataset.mod))
         })
     })
 }
@@ -80,7 +76,6 @@ const estadoBtnsModificar = ({btns, estado}) => {
             document.querySelector(".btnSubmit").style.backgroundColor = "orange"
             document.querySelector(".inpNombre").value = res.nombre
             document.querySelector(".inpDescripcion").value = res.descripcion
-            await estado.putOne(Number(btn.dataset.mod))
         })
     })
 }
@@ -101,7 +96,6 @@ const autorBtnsModificar = ({btns, autor}) => {
             document.querySelector(".inpNombre").value = res.nombre
             document.querySelector(".inpApellido").value = res.apellido
             document.querySelector(".inpNacionalidad").value = res.nacionalidad
-            await autor.putOne(Number(btn.dataset.mod))
         })
     })
 }
@@ -124,7 +118,6 @@ const usuarioBtnsModificar = ({btns, usuario}) => {
             document.querySelector(".inpDireccion").value = res.direccion
             document.querySelector(".inpTelefono").value = res.telefono
             document.querySelector(".inpEmail").value = res.email
-            await usuario.putOne(Number(btn.dataset.mod))
         })
     })
 }
@@ -147,7 +140,6 @@ const prestamoBtnsModificar = ({btns, prestamo}) => {
             document.querySelector(".inpLibro").value = `${res.libroId.id}. ${res.libroId.titulo}`
             document.querySelector(".inpFPrestamo").value = res.fechaPrestamo
             document.querySelector(".inpFDevolucion").value = res.fechaDevolucion
-            await prestamo.putOne(Number(btn.dataset.mod))
         })
     })
 }
@@ -170,7 +162,6 @@ const reservaBtnsModificar = ({btns, reserva}) => {
             document.querySelector(".inpLibro").value = `${res.libroId.id}. ${res.libroId.titulo}`
             document.querySelector(".inpFReserva").value = res.fechaReserva
             document.querySelector(".inpFReservaFin").value = res.fechaReservaFin
-            await reserva.putOne(Number(btn.dataset.mod))
         })
     })
 }
